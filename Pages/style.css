@@ -1,0 +1,342 @@
+*{
+    
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.ctn-app{
+    width: 100%;
+    height: 100vh;
+    background-color: #f6f1f1;
+   
+}
+/* Header de la app */
+.ctn-header{
+    background-color: #37345E ;
+    height: 8%;
+    display: flex;
+   
+    
+}
+.ctn-header-logo{
+  
+    text-align: center;
+    justify-content: center;
+    margin: auto 50px;
+    font-size: 20px;
+    color: white;
+   
+    
+
+}
+
+.ctn-colums{
+    display: flex;
+    height: 90%;
+     
+}
+/* Columna 1 */
+.colum1{
+  
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    
+
+}
+.colum1-barraassets{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    height: 49%;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 5px;
+}
+.colum1-barrasco{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    height: 49%;
+    border-radius: 18px;
+    background-color: white;
+    padding: 5px;
+}
+/* Columna 2  */
+.colum2{
+    
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0px  16px 0px;
+    border-radius: 18px;
+}
+.colum2-titulo{
+   height: 8%;
+   text-align: center;
+   background-color: #37345E ;
+   border-radius: 18px 18px 0 0;
+   display: flex;
+   justify-content: center;
+}
+.colum2-titulo h1{
+  
+    font-size: 20px;
+    margin: auto 10px;
+    color: white;
+
+}
+.colum2-main{
+    height: 92%;
+    background-color: white;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    display: flex;
+    flex-direction: column;
+    
+}
+/* Columna 3 */
+.colum3{
+    /* offset-x | offset-y | blur-radius | color */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    width: 25%;
+    margin: 16px;
+    border-radius: 18px;
+    background-color: white;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+   
+
+}
+.colum3 .colum3-tools{
+    height: 100%;
+    width: 90%;
+   
+}
+.colum3 .ctn-tools{
+    height: 50%;
+   
+    width: 100%;
+    
+}
+
+.colum3 .ctn-tools .tools{
+    padding-top:6px ;
+    margin: 8px;
+}
+.colum3 .ctn-tools button{
+   font-size: 15px;
+   margin-left: 10px;
+   margin-right:10px ;
+   padding-top: 10px;
+   border-bottom: 1px solid rgb(219, 217, 217);
+   padding-bottom: 6px;
+   text-align: center;
+   color: rgb(163, 163, 163);
+   width: 90%;
+}
+/* contendor de Card */
+.card{
+    margin: 5px;
+    border: 1px solid #9F9F9F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    border-radius:18px ;
+    width: 100px;
+    height: 200px;
+}
+
+.colum3-tools{
+    height: 50%;
+}
+.colum3-tools button{
+    width: 100%;
+    background-color: #37345E;
+    margin: 3px;
+    padding: 3px 5px;
+    border-radius: 6px;
+    border: 2px solid #37345E;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+}
+/* formulario */
+.formulario{
+ height: 50%;
+ 
+ 
+}
+
+
+/* formulario crear card */
+.formulario-card-modal {
+   /* border: 1px solid #37345E; */
+   margin: 6px;
+   border-radius: 6px;
+   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ; */
+    
+}
+.formulario-card-modal form{
+    margin: 24px;
+/*  
+    display: flex;
+    flex-direction: column; */
+}
+.formulario-card-modal .inputform{
+   padding: 8px;
+   /* background-color: aqua; */
+   margin: 2px;
+    
+}
+.formulario-card-modal .inputform input{
+    
+     border: none;
+     width: 100%;
+     border-bottom: 1px solid gray;
+     
+ }
+ .formulario-card-modal .inputform input:focus{
+    
+    border: none;
+    outline: none;
+}
+.formulario-card-modal .inputform input:active{
+    
+    border: none;
+    outline: none;
+    
+}
+ .formulario-card-modal .inputform textarea{
+  
+    border: none;
+    width: 100%;
+    margin: 2px auto;
+    border-bottom: 1px solid gray;
+}
+.formulario-card-modal .inputform select{
+    padding: 10px 3px;
+    margin: 6px 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(170, 170, 170);
+   
+   
+}
+
+
+.form-crear-card-options{
+    margin-bottom: 20px;
+    margin-right: 24px;
+    display: flex;
+    justify-content: end;
+}
+.form-crear-card-options button{
+   margin: 2px;
+   margin-bottom: 6px;
+   padding: 2px 12px;
+   background-color: #37345E;
+   color: white;
+   border-radius: 6px;
+}
+
+/* Formulario Historia */
+#form-hi{
+    display: none;
+}
+.form-div-history{
+   
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    border-radius: 8px;
+    
+    
+}
+.form-div-history .form-history{
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+.form-div-history .form-history input{
+    margin-bottom: 6px;
+    border: none;
+    border-bottom: 1px solid rgb(181, 181, 181);
+    outline: none;
+}
+
+.form-div-history .form-history label{
+    margin-bottom: 6px;
+    padding: 6px ;
+    
+}
+
+/* formulario crear card */
+.formulario-card {
+    /* border: 1px solid #37345E; */
+    margin: 6px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+     
+ }
+ .formulario-card form{
+     margin: 24px;
+ /*  
+     display: flex;
+     flex-direction: column; */
+ }
+ .formulario-card .inputform{
+    padding: 8px;
+    /* background-color: aqua; */
+    margin: 2px;
+     
+ }
+ .formulario-card .inputform input{
+     
+      border: none;
+      width: 100%;
+      border-bottom: 1px solid gray;
+      
+  }
+  .formulario-card .inputform input:focus{
+     
+     border: none;
+     outline: none;
+ }
+ .formulario-card .inputform input:active{
+     
+     border: none;
+     outline: none;
+     
+ }
+  .formulario-card .inputform textarea{
+   
+     border: none;
+     width: 100%;
+     margin: 2px auto;
+     border-bottom: 1px solid gray;
+ }
+ .formulario-card .inputform select{
+     padding: 10px 3px;
+     margin: 6px 0;
+     outline: none;
+     border: none;
+     border-bottom: 1px solid rgb(170, 170, 170);
+    
+    
+ }
+ 
+ 
+ .form-crear-card-options{
+     margin-bottom: 20px;
+     margin-right: 24px;
+     display: flex;
+     justify-content: end;
+ }
+ .form-crear-card-options button{
+    margin: 2px;
+    margin-bottom: 6px;
+    padding: 2px 12px;
+    background-color: #37345E;
+    color: white;
+    border-radius: 6px;
+ }
+ 
+ 
