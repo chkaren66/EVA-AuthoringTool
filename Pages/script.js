@@ -129,3 +129,7 @@ const registerNewCard = async () => {
 
     listarCards();
 }
+
+
+
+//codigo para recuperar los assets
