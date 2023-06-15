@@ -133,3 +133,117 @@ const registerNewCard = async () => {
 
 
 //codigo para recuperar los assets
+async function getAssets(){
+    const url = new URL(`http://localhost:3000/api/get/assets_id`);
+    //url.search = new URLSearchParams(params).toString();
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Accept: "/*" // Indica que se aceptan archivos multimedia
+              },
+            
+        }).then();
+        
+        if (response.ok) {
+            const json = await response.json();
+            json.map(async (asset)=>{
+                let idAsset = asset['id'];
+                let path = asset['path'];
+                
+                const partes = path.split('-'); // Dividir la cadena en partes usando el carácter "-"
+                const nombreArchivo = partes.pop();
+                await createAssetItemModal(idAsset,nombreArchivo)
+            })
+            
+        
+        } else {
+            console.log("Error al obtener el asset");
+        }
+    } catch (error) {
+        console.log("Error al pedir assets al servidor", error)
+    }
+}
+
+async function createAssetItemModal(id,title){
+    const container = document.getElementById('container-asset-modal');
+    const item = document.createElement("div");
+    item.setAttribute("class","col mb-5");
+    item.setAttribute("style","height: 100px;");
+    const check = `
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault-${id}">
+            <label class="form-check-label text-truncate d-inline-block w-100" for="flexRadioDefault-${id}">
+            ${title}
+            </label>
+        </div>
+    `;
+
+    item.innerHTML = check;
+    const contImg = document.createElement("div");
+    contImg.setAttribute("class","border border-dark w-100 h-100 item-modal-assets");
+    item.appendChild(contImg);
+   
+    const spinner = document.createElement("div");
+    spinner.setAttribute("id","spinner");
+    
+    contImg.appendChild(spinner);
+
+    let contenido = `
+        <div class="col mb-5" style="height: 100px;">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label text-truncate d-inline-block w-100" for="flexRadioDefault2">
+                Default checked radio
+                </label>
+            </div>
+            <div class="border border-dark w-100 h-100">
+                <img src="" />
+            </div>
+        </div>
+    `;
+    container.appendChild(item);
+
+    
+    
+    
+    
+
+    const url = new URL(`http://localhost:3000/api/file/${id}`);
+    //url.search = new URLSearchParams(params).toString();
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Accept: "/*" // Indica que se aceptan archivos multimedia
+              },
+            
+        }).then();
+        
+        if (response.ok) {
+            // const json = await response.json();
+            // console.log(json)
+            const imageBlob = await response.blob();
+            const imageUrl = URL.createObjectURL(imageBlob);
+            console.log(imageUrl)
+
+            //const spinner = item.querySelector("#spinner");
+            spinner.style.display = "none"; // Oculta el spinner
+            
+           
+            // // Mostrar la imagen en un elemento <img>
+            const imgElement = document.createElement("img");
+            imgElement.src = imageUrl;
+            contImg.appendChild(imgElement);
+
+        
+        } else {
+            console.log("Error al obtener la imagen");
+        }
+    } catch (error) {
+        console.log("Error al pedir imagen al servidor", error)
+    }
+}
+getAssets();
