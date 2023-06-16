@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMELINE</title>
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ---- -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <!-- ----- -->
+    <!-- Editor  -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- ---------- -->
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ---------- -->
+</head>
+<body>
+    <div class="ctn-app">
+        <header class="ctn-header">
+           <div class="ctn-header-logo">TIMELINE</div>
+        </header>
+        <div class="ctn-colums">
+            <div class="colum1">
+              <div id="drop-area" class="colum1-barraassets">
+                <h2>Panel Assets</h2>
+                <button class="drop-button">Upload File</button>
+                <input type="file" name="" id="drop-input-file" hidden>
+                <div class="grid-container-barraassets" id="cnt-bassets">
+                </div>
+            </div>
+               
+                <div class="colum1-barrasco">
+                   <h2>Panel All Proyects </h2>
+                   <button id="btn-new-sco">NEW SCO</button>
+                   <div class="list-scos">
+
+                   </div>
+                   
+                </div>
+            </div>
+            <div  class="colum2" >
+                 <div class="colum2-titulo">
+                    
+                   
+                </div>
+                <div class="colum2-main" id="ctn-principal" >
+
+                <div class="ctn-intro" id="intro">
+                    Create a new proyect, only clicked on the button <span>"New SCO"</span>
+                </div>
+                <!-- <input id="titulo-sco" type="text" placeholder=""> -->
+
+                <!-- Crear Historia -->
+                <div id="form-hi">
+
+                    <div class="form-div-history">
+                        <form action="" class="form-history">
+                          <label for="Titulo">Title Activity</label>
+                          <input id="titulo-sco" class="class-titulo-sco" type="text" placeholder="">
+
+                            <label for="">Historia:</label>
+                           
+                            <div id="editor">
+                               <p>Escribe tu historia aqui!</p>
+                              
+                               <p><br></p>
+                             </div>
+
+                          </form>
+                    </div>
+                  
+                </div>
+                <div class="ctn-cards-titulo" id="title-cards" ><h3   class="ctn-cards-titulo">Tarjetas: </h3></div>
+                <div  id="ctn-cards-id"  >
+                 <div  class="ctn-cards" id="ctn-cards-id2">
+                  
+                 </div>
+                
+                </div>
+                <div id="ctn-save">
+                  <button id="btn-save">SAVE TIMELINE</button>
+                </div>
+
+            </div>
+            </div>
+            <!-- <div class="colum3">
+                <div class="colum3-titulo">Tools</div>
+                <div class="colum3-tools">
+                    <button type="button">SET TITLE</button>
+                    <button type="button" id="btn-add-history">CREATE HISTORY</button>
+                    <button type="button"  data-bs-toggle="modal" id="btn-add-card" data-bs-target="#myModal">
+                        ADD CARD
+                      </button>
+                      <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                      data-bs-dismiss="modal">ADD CARD</button>
+
+                </div> -->
+               
+            </div>
+
+        </div>
+        
+    
+    </div>
+ </div>
+    
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">NEW CARD</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body" id="modal1">
+  
+              <div class="formulario-card-modal" >
+                  <form action="" id="formulario1">
+                      <!-- <div class="inputform">
+                          <label for="">Posicion de la Tarjeta:</label>
+                          <input  type="text" value="">
+                      </div> -->
+                      <div class="inputform">
+                          <label for="">Title</label>
+                          <input id="f-titulo" type="text">
+                      </div>
+                      <div class="inputform">
+                          <label for="">Track</label>
+                          <input id="f-pista" type="text">
+                      </div>
+                      <div class="inputform">
+                          <label for="descripcio">Description</label>
+                          <textarea id="f-descripcion" name="" id="" ></textarea>
+                      </div>
+                      <div class="inputform">
+                        
+                          <div class="imagen-card">
+                             
+                          <label for="lang">Image card</label>
+                           <select name="lenguajes" id="lang">
+                              <option value="selecciona">Selected Card</option>
+                              <option value="imag1">777-1686516925744-prueba.jpeg</option>
+                             
+                              </select>
+                          </div>
+                        
+                      </div>          
+                  </form>
+              </div>
+  
+             
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" id="btn-crear-card" class="btn " data-bs-dismiss="modal">Guardar Cambios</button>
+             
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalToggleLabel">Registrar CARD</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="formulario-card-modal">
+              <form action="" id="formulario1">
+                
+                <div class="inputform">
+                  <label for="">Titulo</label>
+                  <input id="f-titulo" type="text">
+                </div>
+                <div class="inputform">
+                  <label for="">Pista</label>
+                  <input id="f-pista" type="text">
+                </div>
+                <div class="inputform">
+                  <label for="descripcio">Descripcion</label>
+                  <textarea id="f-descripcion" name="" id=""></textarea>
+                </div>
+                <div class="inputform">
+  
+                  <div class="imagen-card">
+  
+                    <label for="lang">Imagen Descriptiva</label>
+                    <select name="lenguajes" id="lang">
+                      <option value="selecciona">Selecciona una Imagen</option>
+                      <option value="imag1">777-1686516925744-prueba.jpeg</option>
+  
+                    </select>
+                  </div>
+  
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Open second modal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+      tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel2">Select one Asset</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row row-cols-4" id="container-asset-modal">
+                
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer mt-4">
+            <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+              data-bs-dismiss="modal">Select asset</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+   
+      <!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="script.js"></script>
+<!-- Initialize Quill editor -->
+<!-- <script>
+  var quill = new Quill('#editor', {
+    theme: 'snow',
+    modules : {
+        toolbar:[['bold', 'italic','underline'],[{'header': 1},{'header':2}], ['link', 'image']]}
+  }).on('text-change', function(){
+     console.log(quill.getText());
+  });
+</script> -->
+</body>
+</html>
