@@ -4,7 +4,19 @@
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
+/* Estandar  -----------*/
+.btn{
+    background-color: #37345E;
+    padding: 4px 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    color: #f6f1f1;
+    cursor: pointer;
+}
 
+/* -------------------- */
 .ctn-app{
     width: 100%;
     height: 100vh;
@@ -39,7 +51,7 @@
 /* Columna 1 */
 .colum1{
   
-    width: 25%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     margin: 16px;
@@ -61,28 +73,15 @@
     background-color: white;
     padding: 5px;
 }
-.colum1-barrasco .list-scos{
-   height: 60%;
-   margin: 6px;
-   border: 1px solid gray;
-}
-.colum1-barrasco #btn-new-sco{
-    margin-top: 8px;
-    margin-left: 10px;
-    background-color: #37345E;
-    padding: 4px 10px;
-    color: white;
-    border-radius: 8px;
-    border: none;
-}
 /* Columna 2  */
 .colum2{
     
-    width: 70%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     margin: 16px 0px  16px 0px;
     border-radius: 18px;
+    
 }
 .colum2-titulo{
    height: 8%;
@@ -92,8 +91,13 @@
    display: flex;
    justify-content: center;
 }
+.colum2-titulo h1{
+  
+    font-size: 20px;
+    margin: auto 10px;
+    color: white;
 
-
+}
 .colum2-main{
     height: 92%;
     background-color: white;
@@ -101,69 +105,31 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: auto; 
+    
     
 }
-.colum2 .ctn-intro{
-   
-   
-    text-align: center;
-    justify-content: center;
-    margin: auto 20px;
-    color: #37345E;
+.colum2-main::-webkit-scrollbar {
+    width: 8px;     
+    height: 8px;    
+    display: none;  
 }
-.colum2 .ctn-intro span{
-    padding: 3px;
-    border-radius: 2px;
-  background-color: #37345E;
-  color: white;
-    
-}
+
+
 /* Columna 3 */
-/* .colum3{
-   
+.colum3{
+    /* offset-x | offset-y | blur-radius | color */
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-    width: 15%;
+    width: 25%;
     margin: 16px;
     border-radius: 18px;
     background-color: white;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    
-   
-   
+    padding: 5px;
 
 }
-.colum3 .colum3-tools{
-
-   
-    padding-top: 10px;
-}
-.colum3 .colum3-titulo{
-   
-   
-    padding: 10px 16px;
-}
-
-.colum3-tools{
-    height: 50%;
-    text-align: center;
-    justify-content: center;
-}
-.colum3-tools button{
-    width: 70%;
-    background-color: #37345E;
-    margin: 3px;
-    padding: 3px 5px;
-    border-radius: 6px;
-    border: 2px solid #37345E;
-    color: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-} */
 /* contendor de Card -------------------------------------*/
 #title-cards{
-    display: none;
+    
 }
 .ctn-cards-titulo{
     
@@ -172,198 +138,158 @@
     padding: 10px;
     color: #37345E;
     font-size: 16px;
-    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ; */
-   
     
 }
 
 #ctn-cards-id{
-  display: none;
- 
-
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+    margin: 10px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+}
+.ctn-btn-add{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: end ;
+    margin: 10px;
+}
+.btn-add-card{
+    max-width: 200px;
+   
+}
+#ctn-cards-id2{
+   
+    margin: 10px;
 }
 .ctn-cards{
    
-    margin: 0 10px;
-    margin-top: 0px;
-    margin-bottom: 10px;
+    
+   
+ margin-bottom: 10px; 
     border-radius: 16px;
     display: flex;
     flex-direction: row;
-    min-height: 400px;
+    min-height: 500px;
     overflow-x: auto;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-}
-.card{
-    /* margin: 5px;
    
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+   
+} 
+::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
     
-    width: 170px;
-    height: 290px;*/
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-    margin: 10px;
-    border-radius:12px ;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background:#f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #43415f; 
+    border-radius: 6px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #37345E; 
+    border-radius: 6px;
+}
+ .card{
     height: 300px;
-    min-width: 200px;
+    width: 200px;
+    /* min-width: 200px;
+    max-width: 200px; */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ; 
+     margin: 10px;
+    border-radius:12px ;
+   border: none;
     display: flex;
     flex-direction: column; 
 }
+
 .card .card-img{
-    height: 40%;
+    height: 50%;
+    background-color: rgb(227, 226, 226);
     border-radius: 12px 12px 0 0 ;
-    /* background-color: aqua; */
+  
 }
+
 .card .card-img img{
     width: 100%;
     height: auto;
     background-size: cover;
     border-radius: 12px 12px 0 0 ;
 }
+
 .card .card-content{
-    margin: 0px 5px;
-    
+
+    height: 50%;
+ 
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   margin: 10px;
 }
+
 .card .card-content h3{
-    margin: 0px 5px;
-    
-    
+   
+    font-size: 20px;
+    height: 20%;
+   
 }
+
 .card .card-content p{
-    margin: 5px;
+    
+    
     margin-bottom: 15px;
     color: rgb(180, 178, 178);
     font-size: 14px;
+    height: 20%;
 }
+
 .card .card-content .card-options{
     
-    text-align: right;
-    margin: 5px;
+    height: 30%;
+    display: flex;
+    flex-direction: row-reverse;
+    
 }
+
 .card .card-content .card-options button{
     border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: right;
+    width: 40px;
+    height: 40px;
+    margin: 0px 6px;
+    /* color: white; */
+    
     border-radius: 6px;
-    /* background-color: #37345E; */
-}
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ; 
 
-#add {
-    border: 1px solid #37345E;
-    margin:5px 20px;
-    padding: 3px 10px;
-    width: 25%;
-    text-align: center;
-    border-radius: 6px;
-    justify-content: center;
+
+} 
+
+.btn-save-all{
    
-   
-}
-
-#ctn-save{
-   display: none;
-    
-}
-
-#btn-save{
-    
-    margin: 10px 10px 20px 10px;
-    padding: 6px 10px;
-    background-color: #37345E;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-}
-/* #add .card-add {
-    width: 30px;
-} */
-/* -------------------------------------------------------- */
-
-
-/* formulario */
-.formulario{
- height: 50%;
- 
- 
-}
-
-
-/* formulario crear card */
-.formulario-card-modal {
-   /* border: 1px solid #37345E; */
-   margin: 6px;
-   border-radius: 6px;
-   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ; */
-    
-}
-.formulario-card-modal form{
-    margin: 24px;
-/*  
-    display: flex;
-    flex-direction: column; */
-}
-.formulario-card-modal .inputform{
-   padding: 8px;
-   /* background-color: aqua; */
-   margin: 2px;
-    
-}
-.formulario-card-modal .inputform input{
-    
-     border: none;
-     width: 100%;
-     border-bottom: 1px solid gray;
-     
- }
- .formulario-card-modal .inputform input:focus{
-    
-    border: none;
-    outline: none;
-}
-.formulario-card-modal .inputform input:active{
-    
-    border: none;
-    outline: none;
-    
-}
- .formulario-card-modal .inputform textarea{
-  
-    border: none;
-    width: 100%;
-    margin: 2px auto;
-    border-bottom: 1px solid gray;
-}
-.formulario-card-modal .inputform select{
-    padding: 10px 3px;
-    margin: 6px 0;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgb(170, 170, 170);
-   
-   
-}
-
-
-.form-crear-card-options{
-    margin-bottom: 20px;
-    margin-right: 24px;
     display: flex;
     justify-content: end;
-}
-.form-crear-card-options button{
-   margin: 2px;
-   margin-bottom: 6px;
-   padding: 2px 12px;
-   background-color: #37345E;
-   color: white;
-   border-radius: 6px;
+    margin: 10px;
+    margin-bottom: 15px;
+    
 }
 
-/* Formulario Historia */
+
+
+
+
+/* Formulario Historia--------------------------------- */
 #form-hi{
-    display: none;
+   
 }
 .form-div-history{
    
@@ -394,53 +320,112 @@
     
 }
 
-/* formulario crear card */
-.formulario-card {
-    /* border: 1px solid #37345E; */
-    background-color: aqua;
+ /* -------------------------------------------- */
+  /* CONTENEDOR CARDS PRUEBA */
+  /* --------------------------------------------- */
+  .draggable-list {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    margin: 20px;
+    
+  }
+  
+  .draggable-list li {
+    background-color: #fff;
+    display: flex;
+    flex: 1;
+    
+    border: 1px solid rgb(216, 216, 216); 
+    margin: 6px;
+    border-radius:30px  8px 8px 8px; 
+  }
+  
+  /* .draggable-list li:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-color);
+    border: 1px solid gray;
+  } */
+  
+  .draggable-list .number {
+    background-color:#37345E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
+  }
+  
+  .draggable-list li.over .draggable {
+    background-color: #eaeaea;
+  }
+  
+  .draggable-list .person-name {
+    margin: 0 20px 0 0;
+  }
+  
+ 
+  .draggable {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    flex: 1;
+  }
+  
+  
+
+  
+/* formulario crear card -------------------------------------*/
+.formulario-card-modal {
     margin: 6px;
     border-radius: 6px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) ;
-     
+   
  }
- .formulario-card form{
+ .formulario-card-modal form{
      margin: 24px;
- /*  
-     display: flex;
-     flex-direction: column; */
+
  }
- .formulario-card .inputform{
+ .formulario-card-modal .inputform{
     padding: 8px;
-    /* background-color: aqua; */
+  
     margin: 2px;
      
  }
- .formulario-card .inputform input{
+ .formulario-card-modal .inputform input{
      
       border: none;
       width: 100%;
       border-bottom: 1px solid gray;
       
   }
-  .formulario-card .inputform input:focus{
+  .formulario-card-modal .inputform input:focus{
      
      border: none;
      outline: none;
  }
- .formulario-card .inputform input:active{
+ .formulario-card-modal .inputform input:active{
      
      border: none;
      outline: none;
      
  }
-  .formulario-card .inputform textarea{
+  .formulario-card-modal .inputform textarea{
    
      border: none;
      width: 100%;
      margin: 2px auto;
      border-bottom: 1px solid gray;
  }
- .formulario-card .inputform select{
+ .formulario-card-modal .inputform select{
      padding: 10px 3px;
      margin: 6px 0;
      outline: none;
@@ -449,126 +434,10 @@
     
     
  }
- 
- 
- .form-crear-card-options{
-     margin-bottom: 20px;
-     margin-right: 24px;
-     display: flex;
-     justify-content: end;
- }
- .form-crear-card-options button{
-    margin: 2px;
-    margin-bottom: 6px;
-    padding: 2px 12px;
-    background-color: #37345E;
-    color: white;
-    border-radius: 6px;
- }
- 
- 
 
- 
-/* Estilos para la columna de assets */
-h2{
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    margin: 15px 10px;
-    margin-right: 30px;
-}
-
-.drop-button{
-    padding: 4px 10px;
-    border-radius: 10px;
-    background-color: #37345ed3;
-    color: white;
-    border: none;
-}
-
-.grid-container-barraassets {
-    position: relative;
-    height: 33vh;
-    display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10,auto);
-    grid-gap: 10px;
-    
-    grid-auto-flow: dense;
+ /* Editor */
+ #editor{
+    height: 300px;
+    max-height: 300px;
     overflow-y: auto;
-    margin: 5px;
-  }
-  
-.grid-item-barraassets {
-    position: relative;
-    height:70px;
-    background-color: #37345e85;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-} 
-
-.grid-item-barraassets img{
-    width: inherit;
-    height: inherit;
-}
-
-#spinner {
-    top: 0;
-    left: 0;
-    width: inherit;
-    height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #spinner:after {
-    content: "";
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 4px solid #ffffff;
-    border-top-color: transparent;
-    animation: spin 1s infinite linear;
-  }
-  
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-
-
- /* Estilos extra para el modal de assets */
- .item-modal-assets img{
-    width: inherit;
-    height: inherit;
-}
-
-#spinner {
-    top: 0;
-    left: 0;
-    width: inherit;
-    height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  #spinner:after {
-    content: "";
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 4px solid #37345E;
-    border-top-color: transparent;
-    animation: spin 1s infinite linear;
-  }
-  
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+ }

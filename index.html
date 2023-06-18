@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMELINE</title>
+ 
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,6 +28,7 @@
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- ---------- -->
+
 </head>
 <body>
     <div class="ctn-app">
@@ -31,233 +37,220 @@
         </header>
         <div class="ctn-colums">
             <div class="colum1">
-              <div id="drop-area" class="colum1-barraassets">
-                <h2>Panel Assets</h2>
-                <button class="drop-button">Upload File</button>
-                <input type="file" name="" id="drop-input-file" hidden>
-                <div class="grid-container-barraassets" id="cnt-bassets">
-                </div>
-            </div>
-               
-                <div class="colum1-barrasco">
-                   <h2>Panel All Proyects </h2>
-                   <button id="btn-new-sco">NEW SCO</button>
-                   <div class="list-scos">
-
-                   </div>
-                   
-                </div>
+                <div class="colum1-barraassets">Barra assets</div>
+                <div class="colum1-barrasco">Barra Sco</div>
             </div>
             <div  class="colum2" >
                  <div class="colum2-titulo">
-                    
-                   
+                    <h1></h1>
                 </div>
-                <div class="colum2-main" id="ctn-principal" >
+                <div class="colum2-main" id="ctn-principal">
+                    <!-- Crear Historia -->
+                    <div id="form-hi">
 
-                <div class="ctn-intro" id="intro">
-                    Create a new proyect, only clicked on the button <span>"New SCO"</span>
-                </div>
-                <!-- <input id="titulo-sco" type="text" placeholder=""> -->
-
-                <!-- Crear Historia -->
-                <div id="form-hi">
-
-                    <div class="form-div-history">
-                        <form action="" class="form-history">
-                          <label for="Titulo">Title Activity</label>
-                          <input id="titulo-sco" class="class-titulo-sco" type="text" placeholder="">
-
-                            <label for="">Historia:</label>
-                           
-                            <div id="editor">
-                               <p>Escribe tu historia aqui!</p>
-                              
-                               <p><br></p>
-                             </div>
-
-                          </form>
+                        <div class="form-div-history">
+                            <form action="" class="form-history">
+                              <label for="Titulo">Title Activity (*):</label>
+                              <input id="titulo-sco" class="class-titulo-sco" required type="text" placeholder="">
+    
+                                <label for="">History:</label>
+                               
+                                <div id="editor">
+                                   <p>Write your history here!</p>
+                                  
+                                   <p><br></p>
+                                 </div>
+    
+                              </form>
+                        </div>
+                      
                     </div>
-                  
-                </div>
-                <div class="ctn-cards-titulo" id="title-cards" ><h3   class="ctn-cards-titulo">Tarjetas: </h3></div>
-                <div  id="ctn-cards-id"  >
-                 <div  class="ctn-cards" id="ctn-cards-id2">
-                  
-                 </div>
-                
-                </div>
-                <div id="ctn-save">
-                  <button id="btn-save">SAVE TIMELINE</button>
-                </div>
-
-            </div>
-            </div>
-            <!-- <div class="colum3">
-                <div class="colum3-titulo">Tools</div>
-                <div class="colum3-tools">
-                    <button type="button">SET TITLE</button>
-                    <button type="button" id="btn-add-history">CREATE HISTORY</button>
-                    <button type="button"  data-bs-toggle="modal" id="btn-add-card" data-bs-target="#myModal">
+                    <!-- ---------------------------- -->
+                    <div class="ctn-cards-titulo" id="title-cards" ><h3   class="ctn-cards-titulo">Cards (*): </h3></div>
+                    <div  id="ctn-cards-id"  >
+                     <div  class="ctn-cards" id="ctn-cards-id2">
+                        <!-- prueba -->
+                        <ul class="draggable-list" id="draggable-list"></ul>
+                        
+                        <!-- --------------- -->
+                     </div>
+                     <div class="ctn-btn-add">
+                      <button class="btn btn-add-card" id="add-card">
                         ADD CARD
-                      </button>
-                      <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
-                      data-bs-dismiss="modal">ADD CARD</button>
-
-                </div> -->
-               
+                     
+                     </button>
+                     </div>
+                     
+                    </div>
+                    <div class="btn-save-all" id="ctn-save">
+                      <button class="btn" id="btn-save">SAVE TIMELINE</button>
+                    </div>
+                </div>
+                
             </div>
-
+          
         </div>
+       
+        
+       
+        
         
     
     </div>
- </div>
-    
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-      
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">NEW CARD</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-      
-            <!-- Modal body -->
-            <div class="modal-body" id="modal1">
-  
-              <div class="formulario-card-modal" >
-                  <form action="" id="formulario1">
-                      <!-- <div class="inputform">
-                          <label for="">Posicion de la Tarjeta:</label>
-                          <input  type="text" value="">
-                      </div> -->
-                      <div class="inputform">
-                          <label for="">Title</label>
-                          <input id="f-titulo" type="text">
-                      </div>
-                      <div class="inputform">
-                          <label for="">Track</label>
-                          <input id="f-pista" type="text">
-                      </div>
-                      <div class="inputform">
-                          <label for="descripcio">Description</label>
-                          <textarea id="f-descripcion" name="" id="" ></textarea>
-                      </div>
-                      <div class="inputform">
-                        
-                          <div class="imagen-card">
-                             
-                          <label for="lang">Image card</label>
-                           <select name="lenguajes" id="lang">
-                              <option value="selecciona">Selected Card</option>
-                              <option value="imag1">777-1686516925744-prueba.jpeg</option>
-                             
-                              </select>
-                          </div>
-                        
-                      </div>          
-                  </form>
-              </div>
-  
-             
-            </div>
-      
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="submit" id="btn-crear-card" class="btn " data-bs-dismiss="modal">Guardar Cambios</button>
-             
-            </div>
-      
-          </div>
-        </div>
-      </div>
-      
 
-      <!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-      tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalToggleLabel">Registrar CARD</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="formulario-card-modal">
-              <form action="" id="formulario1">
-                
-                <div class="inputform">
-                  <label for="">Titulo</label>
-                  <input id="f-titulo" type="text">
-                </div>
-                <div class="inputform">
-                  <label for="">Pista</label>
-                  <input id="f-pista" type="text">
-                </div>
-                <div class="inputform">
-                  <label for="descripcio">Descripcion</label>
-                  <textarea id="f-descripcion" name="" id=""></textarea>
-                </div>
-                <div class="inputform">
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
   
-                  <div class="imagen-card">
-  
-                    <label for="lang">Imagen Descriptiva</label>
-                    <select name="lenguajes" id="lang">
-                      <option value="selecciona">Selecciona una Imagen</option>
-                      <option value="imag1">777-1686516925744-prueba.jpeg</option>
-  
-                    </select>
-                  </div>
-  
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Open second modal</button>
-          </div>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">NEW CARD</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body" id="modal1">
+
+          <div class="formulario-card-modal" >
+              <form action="" id="formulario1">
+                  
+                  <div class="inputform">
+                      <label for="">Title :</label>
+                      <input id="f-titulo" type="text" maxlength="50" minlength="5" required>
+                  </div>
+                  <div class="inputform">
+                      <label for="">Track</label>
+                      <input id="f-pista" type="text" maxlength="60" minlength="5" required>
+                  </div>
+                  <div class="inputform">
+                      <label for="descripcio">Description</label>
+                      <textarea id="f-descripcion" name="" id="" maxlength="150" required ></textarea>
+                  </div>
+                  <div class="inputform">
+                    
+                      <div class="imagen-card">
+                         
+                      <label for="lang">Image card</label>
+                       <select name="lenguajes" id="lang">
+                          <option value="selecciona">Selected Card</option>
+                          <option value="imag1">imagen1.jpg</option>
+                          <option value="imag1">imagen2.jpg</option>
+                          <option value="imag1">imagen3.jpg</option>
+                          <option value="imag1">imagen4.jpg</option>
+                          <option value="imag1">imagen5.jpg</option>
+                          
+                         
+                          </select>
+                      </div>
+                    
+                  </div>          
+              </form>
+          </div>
+
+         
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" id="btn-crear-card" class="btn " data-bs-dismiss="modal">Save Card</button>
+         
+        </div>
+  
       </div>
     </div>
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-      tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalToggleLabel2">Select one Asset</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <div class="row row-cols-4" id="container-asset-modal">
-                
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer mt-4">
-            <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
-              data-bs-dismiss="modal">Select asset</button>
-          </div>
-        </div>
+  </div>
+  
+
+  <!-- The Modal -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">EDIT CARD</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-    </div> -->
-   
-      <!-- Include the Quill library -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="script.js"></script>
-<!-- Initialize Quill editor -->
-<!-- <script>
-  var quill = new Quill('#editor', {
-    theme: 'snow',
-    modules : {
-        toolbar:[['bold', 'italic','underline'],[{'header': 1},{'header':2}], ['link', 'image']]}
-  }).on('text-change', function(){
-     console.log(quill.getText());
-  });
-</script> -->
+
+      <!-- Modal body -->
+      <div class="modal-body" id="modal1">
+
+        <div class="formulario-card-modal" >
+            <form action="" id="formulario2">
+                <!-- <div class="inputform">
+                    <label for="">Posicion de la Tarjeta:</label>
+                    <input  type="text" value="">
+                </div> -->
+                <div class="inputform">
+                    <label for="">Title</label>
+                    <input id="f2-titulo" type="text" maxlength="50" minlength="5" required>
+                </div>
+                <div class="inputform">
+                    <label for="">Track</label>
+                    <input id="f2-pista" type="text" maxlength="50" minlength="5" required>
+                </div>
+                <div class="inputform">
+                    <label for="descripcio">Description</label>
+                    <textarea id="f2-descripcion" name="" id="" maxlength="150" minlength="5" required></textarea>
+                </div>
+                <div class="inputform">
+                  
+                    <div class="imagen-card">
+                       
+                    <label for="lang">Image card</label>
+                     <select name="lenguajes" id="lang">
+                        <option value="selecciona">Selected Card</option>
+                        <option value="imag1">777-1686516925744-prueba.jpeg</option>
+                       
+                        </select>
+                    </div>
+                  
+                </div>          
+            </form>
+        </div>
+
+       
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" id="btn-edit-card" class="btn " data-bs-dismiss="modal">Save Changes</button>
+       
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Question</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this card?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="eliminar" class="btn">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
