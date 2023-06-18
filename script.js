@@ -10,6 +10,7 @@ const addCard = document.getElementById('add-card');
 let crearCard = document.getElementById('btn-crear-card');
 let editCard = document.getElementById('btn-edit-card');
 let seveAll = document.getElementById('btn-save');
+let imagenSeleccionada = '';
 let editorText = '';
 let idEditar = 0;
 let contador = 100;
@@ -31,7 +32,13 @@ let sco = {};
 
 
 
+var imagen = document.getElementById('imagen');
 
+imagen.addEventListener('change', function(){
+  var option = imagen.options[imagen.selectedIndex];
+  console.log(option.text)
+  imagenSeleccionada = option.text;
+})
 
 // Accion de presionar el boton save (save all)
 seveAll.addEventListener('click', function(){
@@ -44,7 +51,7 @@ seveAll.addEventListener('click', function(){
   console.log(sco)
   console.log(listSaveCards)
   console.log(typeof(editorText));
-  // registerNewSco();
+  registerNewSco();
   registerCards();
 });
 
@@ -58,11 +65,13 @@ crearCard.addEventListener('click', function(){
     var titulo = document.getElementById('f-titulo').value;
     var pista = document.getElementById('f-pista').value;
     var descripcion = document.getElementById('f-descripcion').value;
+   
+    console.log()
     contador++;
     card ={
        "id_local": contador,
        "sco_id": idSco,
-       "asset_name": "777-1686516925744-prueba.jpeg",
+       "asset_name": imagenSeleccionada,
        "title": titulo,
        "track": pista,
        "posOrden": lengthArrayCards,
