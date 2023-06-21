@@ -37,8 +37,20 @@
         </header>
         <div class="ctn-colums">
             <div class="colum1">
-                <div class="colum1-barraassets">Barra assets</div>
-                <div class="colum1-barrasco">Barra Sco</div>
+                <!-- <div class="colum1-barraassets">
+                  <h3>ASSETS</h3>
+                  <div class="grid-container-barraassets" id="cnt-bassets">
+                  </div>
+                </div> -->
+
+                <div id="drop-area" class="colum1-barraassets">
+                  <h2>ASSETS</h2>
+                  <button class="btn drop-button">Subir Archvio</button>
+                  <input type="file" name="" id="drop-input-file" hidden>
+                  <div class="grid-container-barraassets" id="cnt-bassets">
+                  </div>
+              </div>
+                <!-- <div class="colum1-barrasco">Barra Sco</div> -->
             </div>
             <div  class="colum2" >
                  <div class="colum2-titulo">
@@ -51,8 +63,9 @@
                         <div class="form-div-history">
                             <form action="" class="form-history">
                               <label for="Titulo">Title Activity (*):</label>
-                              <input id="titulo-sco" class="class-titulo-sco" required type="text" placeholder="">
-    
+                              <input id="titulo-sco" class="class-titulo-sco" maxlength="200" required type="text" placeholder="">
+                              <label for="instruction">Instruction:</label>
+                              <input id="instruction" class="class-titulo-sco" maxlength="300" required type="text" placeholder="">
                                 <label for="">History:</label>
                                
                                 <div id="editor">
@@ -79,6 +92,7 @@
                         ADD CARD
                      
                      </button>
+                     
                      </div>
                      
                     </div>
@@ -134,11 +148,6 @@
                       <label for="lang">Image card</label>
                        <select name="imagenes" id="imagen" >
                           <option value="selecciona" disabled>Selected Card</option>
-                          <option value="imagen1">imagen1.jpg</option>
-                          <option value="imagen2">imagen2.jpg</option>
-                          <option value="imagen3">imagen3.jpg</option>
-                          <option value="imagen4">imagen4.jpg</option>
-                          <option value="imagen5">imagen5.jpg</option>
                           
                          
                           </select>
@@ -199,9 +208,9 @@
                     <div class="imagen-card">
                        
                     <label for="lang">Image card</label>
-                     <select name="lenguajes" id="lang">
-                        <option value="selecciona">Selected Card</option>
-                        <option value="imag1">777-1686516925744-prueba.jpeg</option>
+                     <select name="lenguajes" id="imagen2">
+                        
+                        
                        
                         </select>
                     </div>
@@ -248,6 +257,83 @@
 
 
  
+
+<!-- -------------------------------------------------- -->
+  <!-- Modal assets -->
+  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalToggleLabel">Registrar CARD</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="formulario-card-modal">
+            <form action="" id="formulario1">
+              <!-- <div class="inputform">
+                        <label for="">Posicion de la Tarjeta:</label>
+                        <input  type="text" value="">
+                    </div> -->
+              <div class="inputform">
+                <label for="">Titulo</label>
+                <input id="f-titulo" type="text">
+              </div>
+              <div class="inputform">
+                <label for="">Pista</label>
+                <input id="f-pista" type="text">
+              </div>
+              <div class="inputform">
+                <label for="descripcio">Descripcion</label>
+                <textarea id="f-descripcion" name="" id=""></textarea>
+              </div>
+              <div class="inputform">
+
+                <div class="imagen-card">
+
+                  <label for="lang">Imagen Descriptiva</label>
+                  <select name="lenguajes" id="lang">
+                    <option value="selecciona">Selecciona una Imagen</option>
+                    <option value="imag1">777-1686516925744-prueba.jpeg</option>
+
+                  </select>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Open second modal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">Select one Asset</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row row-cols-4" id="container-asset-modal">
+              
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer mt-4">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+            data-bs-dismiss="modal">Select asset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ----------------------------------------------------- -->
 
 
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

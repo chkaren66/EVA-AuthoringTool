@@ -11,15 +11,16 @@ let crearCard = document.getElementById('btn-crear-card');
 let editCard = document.getElementById('btn-edit-card');
 let seveAll = document.getElementById('btn-save');
 let imagenSeleccionada = '';
+let imagenSeleccionada2 = '';
 let editorText = '';
 let idEditar = 0;
 let contador = 100;
-let idSco = 7;
+let idSco = 0;
 let lengthArrayCards = 1;
 let listSaveCards = [{
   "id_local": contador,
   "sco_id": idSco,
-  "asset_name": "imagen1.jpg",
+  "asset_name": "777-1687370189644-tupacAmaru.jpg",
   "title": "Example title of a card",
   "track": "A track for your student",
   "posOrden": 0,
@@ -29,7 +30,8 @@ let card = {};
 let listItems = [];
 let sco = {};
 
-
+var lista1=[];
+var lista2=[];
 
 
 var imagen = document.getElementById('imagen');
@@ -39,24 +41,69 @@ imagen.addEventListener('change', function(){
   console.log(option.text)
   imagenSeleccionada = option.text;
 })
+var imagen2 = document.getElementById('imagen2');
+
+imagen2.addEventListener('change', function(){
+  var option = imagen2.options[imagen2.selectedIndex];
+  console.log(option.text)
+  imagenSeleccionada2 = option.text;
+})
+
 
 // Accion de presionar el boton save (save all)
-seveAll.addEventListener('click', function(){
+seveAll.addEventListener('click', function (){
   var titulo = document.getElementById('titulo-sco').value;
+  var instruccion = document.getElementById('instruction').value;
   sco = {
     "title": titulo,
     "historiaprevia": " "+editorText+" "
   }
+  var cardsScorm = [];
+  listSaveCards.forEach(card =>{
+          var cardsco =  {
+            "titulo":card.title,
+            "descripcion":card.description,
+            "path":card.asset_name,
+            "pista":card.track
+          }
+          cardsScorm.push(cardsco);
+  })
+  console.log(cardsScorm);
+  var scorm = {
+    "titulo": titulo,
+    "instruccion": instruccion,
+    "historia":  editorText,
+    "cards": cardsScorm
+  }
+  console.log(scorm)
+  generateScorm(scorm);
+
   // Guardar cards
-  console.log(sco)
-  console.log(listSaveCards)
-  console.log(typeof(editorText));
-  registerNewSco();
-  registerCards();
+  // console.log(sco)
+  // console.log(listSaveCards)
+  // console.log(typeof(editorText));
+  
+  // registerNewSco();
+
+  // setTimeout(function(){
+  //   window.location.href= 'view-student.html?parametro1='+idSco;
+  // },5000)
+  
+ 
+  
 });
 
 // Add new card 
 addCard.addEventListener('click', function(){
+    var elementoSelect =document.getElementById('imagen');
+    var html = ` <option value="selecciona" selected>Selected Card</option>`;
+    lista1.forEach(imagen =>{
+      html += `<option value="${imagen.path}">${imagen.path}</option>`;
+     
+      // var elemento = document.createElement("option")
+      // elemento.setAttribute("value", imagen.path)
+      elementoSelect.innerHTML=html;
+    })
     myModal.show();
 })
 
@@ -72,6 +119,7 @@ crearCard.addEventListener('click', function(){
        "id_local": contador,
        "sco_id": idSco,
        "asset_name": imagenSeleccionada,
+       
        "title": titulo,
        "track": pista,
        "posOrden": lengthArrayCards,
@@ -107,6 +155,17 @@ const addActionEdit = () => {
         document.getElementById('f2-titulo').setAttribute('value', elementEditar.title);
         document.getElementById('f2-pista').setAttribute('value', elementEditar.track );
         document.getElementById('f2-descripcion').setAttribute('value', elementEditar.description);
+
+
+        var elementoSelect =document.getElementById('imagen2');
+    var html = ` <option value="selecciona" selected>Selected Card</option>`;
+    lista1.forEach(imagen =>{
+      html += `<option value="${imagen.path}">${imagen.path}</option>`;
+     
+      // var elemento = document.createElement("option")
+      // elemento.setAttribute("value", imagen.path)
+      elementoSelect.innerHTML=html;
+    })
         myModal2.show();
         
     });
@@ -121,7 +180,8 @@ editCard.addEventListener('click', function(){
     if(elemento.id_local == idEditar){
       elemento.title = titulo;
       elemento.track = pista;
-      elemento.description = descripcion
+      elemento.description = descripcion;
+      elemento.asset_name=imagenSeleccionada2;
     }
    });
    
@@ -144,6 +204,7 @@ editCard.addEventListener('click', function(){
            btnEliminar.addEventListener('click', function(){
               
               const eliminar = listSaveCards.findIndex(x => x.id_local === ideliminar)
+              console.log(ideliminar)
               listSaveCards.splice(eliminar,1);
               removeList();
               createList();
@@ -207,6 +268,7 @@ function createList() {
         listItem.setAttribute('data-index', index);
         listItem.innerHTML = `
           <span class="number">${index + 1}</span>
+          
           <div class="draggable" draggable="true">
           <div class="card" id="${card.id_local}">
           <div class="card-img">
@@ -223,6 +285,7 @@ function createList() {
            </div>
         </div>
           </div>
+             
           </div>
         `;
   
@@ -292,6 +355,7 @@ function checkOrder() {
 
     if (personName !== listSaveCards[index]) {
       listItem.classList.add('wrong');
+      // console.log(listSaveCards[index].description)
     } else {
       listItem.classList.remove('wrong');
       listItem.classList.add('right');
@@ -367,6 +431,8 @@ const registerNewSco = async () => {
          let res =  await response.json();
          console.log(res.SCO.id);
          idSco = res.SCO.id;
+         
+        
       } else {
           console.log("Error al registrar SCO");
       }
@@ -374,12 +440,13 @@ const registerNewSco = async () => {
     console.log("Error al registrar el Sco en el servidor", error)
   }
   
-  
+  registerCards();
 }
 // Registrar card en la base de datos
 const registerCards = async () => {
   try {
     listSaveCards.forEach(elemento => {
+      elemento.sco_id= idSco;
       registerOneCard(elemento); 
     })
 } catch (error) {
@@ -408,5 +475,302 @@ const registerOneCard = async (elemento) => {
 } catch (error) {
   console.log("Error al registrar card", error)
 }
- 
 }
+// -----------------------------------
+//  Leer imagenes
+// -------------------------------------
+
+/** Codigo para el drag-drop asset */
+
+var containerAssets = document.getElementById('cnt-bassets');
+const dropInputFile = document.getElementById('drop-input-file');
+const dropButton = document.querySelector('.drop-button');
+
+dropButton.addEventListener("click",(e)=>{
+    dropInputFile.click()
+})
+dropInputFile.addEventListener("change", async (e)=>{
+    // const file = e.files[0];
+    const file = dropInputFile.files[0];
+    const response = await uploadFile(file);
+    const idAsset = response["id"];
+    await createAssetItem(idAsset);
+    // const assetCard = document.createElement("div");
+    // const spinner = document.createElement("div");
+    // spinner.setAttribute("id","spinner")
+    // assetCard.setAttribute("class","grid-item-barraassets")
+    // containerAssets.appendChild(assetCard)
+    // assetCard.appendChild(spinner)
+    // obtenerImagen(assetCard);
+})
+async function uploadFile(file){
+    const formData = new FormData();
+    formData.append("file",file);
+    const url = new URL(`http://localhost:3000/api/upload`);
+    //url.search = new URLSearchParams(params).toString();
+
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData,
+            
+        }).then();
+        
+        if (response.ok) {
+            const res = await response.json();
+            return res;
+            
+        
+        } else {
+            console.log("Error al obtener el asset");
+        }
+    } catch (error) {
+        console.log("Error al subir el asset al servidor", error)
+    }
+}
+async function obtenerImagen(padre) {
+    
+    const params = { id: 1 };
+    const url = new URL(`http://localhost:3000/api/file/1`);
+    //url.search = new URLSearchParams(params).toString();
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Accept: "/*" // Indica que se aceptan archivos multimedia
+              },
+            
+        }).then();
+        
+        if (response.ok) {
+            // const json = await response.json();
+            // console.log(json)
+            const imageBlob = await response.blob();
+            const imageUrl = URL.createObjectURL(imageBlob);
+            console.log(imageUrl)
+
+            const spinner = padre.querySelector("#spinner");
+            spinner.style.display = "none"; // Oculta el spinner
+            
+           
+            // // Mostrar la imagen en un elemento <img>
+            const imgElement = document.createElement("img");
+            imgElement.src = imageUrl;
+            padre.appendChild(imgElement);
+        
+        } else {
+            console.log("Error al obtener la imagen");
+        }
+    } catch (error) {
+        console.log("Error al pedir imagen al servidor", error)
+    }
+}
+
+async function recuperarAssets(){
+    const params = { id: 1 };
+    const url = new URL(`http://localhost:3000/api/get/assets_id`);
+    //url.search = new URLSearchParams(params).toString();
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Accept: "/*" // Indica que se aceptan archivos multimedia
+              },
+            
+        }).then();
+        
+        if (response.ok) {
+            const json = await response.json();
+            lista1= json;
+            console.log(lista1)
+            json.map(async (asset)=>{
+                let idAsset = asset['id'];
+                await createAssetItem(idAsset)
+            })
+            
+        
+        } else {
+            console.log("Error al obtener el asset");
+        }
+    } catch (error) {
+        console.log("Error al pedir assets al servidor", error)
+    }
+}
+
+async function createAssetItem(id){
+    const assetCard = document.createElement("div");
+    const spinner = document.createElement("div");
+    spinner.setAttribute("id","spinner")
+    assetCard.setAttribute("class","grid-item-barraassets")
+    containerAssets.appendChild(assetCard)
+    assetCard.appendChild(spinner)
+    
+    const url = new URL(`http://localhost:3000/api/file/${id}`);
+    //url.search = new URLSearchParams(params).toString();
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Accept: "/*" // Indica que se aceptan archivos multimedia
+              },
+            
+        }).then();
+        
+        if (response.ok) {
+            // const json = await response.json();
+            // console.log(json)
+            const imageBlob = await response.blob();
+            const imageUrl = URL.createObjectURL(imageBlob);
+            console.log(imageUrl)
+
+            const spinner = assetCard.querySelector("#spinner");
+            spinner.style.display = "none"; // Oculta el spinner
+            
+           
+            // // Mostrar la imagen en un elemento <img>
+            const imgElement = document.createElement("img");
+            imgElement.src = imageUrl;
+            assetCard.appendChild(imgElement);
+        
+        } else {
+            console.log("Error al obtener la imagen");
+        }
+    } catch (error) {
+        console.log("Error al pedir imagen al servidor", error)
+    }
+}
+
+recuperarAssets();
+
+
+
+
+
+// var listImagens = [];
+// const ctnImagnes = () => {
+//   var ctnImg = document.getElementById('cnt-bassets');
+//   listImagens.forEach(imagen =>{
+//             const contendedor = document.createElement("div")
+//             contendedor.setAttribute('class', "ctn-img")
+//             const imgElement = document.createElement("img");
+//             imgElement.src = imagen.path;
+//             console.log(imagen.path);
+//             var tituloimagen = document.createElement("p")
+//             tituloimagen.textContent=imagen.titulo;
+//             console.log(imagen.titulo);
+
+//             ctnImg.appendChild(contendedor);
+//             contendedor.appendChild(imgElement);
+//             contendedor.appendChild(tituloimagen)
+//   })
+
+// }
+
+// const getImages = () => {
+//   fetch('imagenes.json')
+//   .then(response => response.json())
+//   .then(data => {
+//     // Aquí puedes trabajar con los datos del archivo JSON
+//     console.log(data);
+//     listImagens = data;
+//     ctnImagnes();
+//   })
+//   .catch(error => {
+//     console.error('Error al leer el archivo JSON:', error);
+//   });
+  
+// }
+// getImages();
+
+
+
+
+// -----------------------------------------
+//  Leer nombres de imagenes
+// -----------------------------------------
+
+// const getNamesFiles = async () => {
+//   try{
+//       const response = await fetch(path+"filesNames").then();
+//       if(response.ok){
+//           const jsonData = await response.json();
+          
+         
+//           console.log(jsonData)
+          
+//       }else{
+//           console.log("error al obtener ")
+//       }
+     
+    
+//   }catch(error){
+//       console.log("Error al obtener el sco ")
+//   }
+
+ 
+ 
+  
+// }
+// getNamesFiles();
+
+
+// Generar Scorm
+const generateScorm= async (elemento) => {
+  try {
+    const response = await fetch(path+"genScorm", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(elemento)
+
+    }).then();
+    
+    if (response.ok) {
+       let res =  await response.blob()
+       downloadBlob(res, elemento.titulo+".zip")
+       console.log(res);
+       
+    } else {
+        console.log("Se genero scorm");
+    }
+} catch (error) {
+  console.log("Error de generacion en el servidor", error)
+}
+}
+
+
+function downloadBlob(blob, name) {
+  if (
+    window.navigator && 
+    window.navigator.msSaveOrOpenBlob
+  ) return window.navigator.msSaveOrOpenBlob(blob);
+
+  // For other browsers:
+  // Create a link pointing to the ObjectURL containing the blob.
+  const data = window.URL.createObjectURL(blob);
+
+  const link = document.createElement('a');
+  link.href = data;
+  link.download = name;
+
+  // this is necessary as link.click() does not work on the latest firefox
+  link.dispatchEvent(
+    new MouseEvent('click', { 
+      bubbles: true, 
+      cancelable: true, 
+      view: window 
+    })
+  );
+
+  setTimeout(() => {
+    // For Firefox it is necessary to delay revoking the ObjectURL
+    window.URL.revokeObjectURL(data);
+    link.remove();
+  }, 100);
+}
+
+// Usage
